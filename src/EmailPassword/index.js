@@ -33,6 +33,7 @@ export default function EmailPassword({
   auth,
   callbacks,
   authType = "both",
+  resetMethod = "loginlink",
   setAlert,
   setError,
   continueUrl,
@@ -196,7 +197,10 @@ export default function EmailPassword({
       let url = new URL(window.location.href);
       url.searchParams.set("email", email);
       url.searchParams.set("resetPassword", "true");
-      await sendSignInLinkToEmail(auth, email, {
+      
+      const resetFunc = resetMethod === "resetemail" ? sendPasswordResetEmail : sendSignInLinkToEmail;
+      
+      await resetFunc(auth, email, {
         handleCodeInApp: true,
         url: url.toString(),
       }).then(() => {

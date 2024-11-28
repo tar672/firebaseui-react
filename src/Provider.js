@@ -29,6 +29,7 @@ export default function Provider({
   fullLabel,
   callbacks,
   authType,
+  resetMethod,
   customStyles,
   continueUrl,
   setSendSMS,
@@ -155,6 +156,7 @@ export default function Provider({
       auth={auth}
       callbacks={callbacks}
       authType={authType}
+      resetMethod={resetMethod}
       continueUrl={continueUrl}
       setAlert={setAlert}
       setError={setError}
